@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'Open Sans Regular';
+  src: url("../fonts/OpenSans-Regular.eot");
+  src: url("../fonts/OpenSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular.woff") format("woff"), url("../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans Semibold';
+  src: url("../fonts/OpenSans-SemiBold.eot");
+  src: url("../fonts/OpenSans-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-SemiBold.woff") format("woff"), url("../fonts/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url("../fonts/Roboto-Bold.eot");
+  src: url("../fonts/Roboto-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Bold.woff") format("woff"), url("../fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Open Sans Regular', sans-serif;
+  height: 1500px;
+}
+
+.header {
+  background: #026aa7;
+  text-align: center;
+  padding: 5px 5px;
+}
+
+.header .logotip {
+  display: inline-block;
+}
+
+.header .logo {
+  height: 22px;
+  width: 22px;
+  background: url("../img/logotip.png") no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.header h1 {
+  color: #ffffff;
+  font-size: 30px;
+  display: inline-block;
+  text-align: center;
+  font-style: italic;
+  padding-left: 10px;
+}
+/*# sourceMappingURL=style.css.map */
