@@ -7,6 +7,8 @@
     <title>To Do List</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link id="favicon" rel="icon" type="image/png" sizes="64x64" href="../img/favicon.png">
+    <link rel="mask-icon" href="../img/favicon.svg" color="#0079BF">
 </head>
 <body>
     <div class="header">
@@ -17,6 +19,48 @@
                 <h1>To Do List</h1>
         </div>
     </div>
+    <section class="namedosk">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <h3>Задания по университету</h3>
+                </div>
+                <div class="col-12 col-md-4">
+                    <button type="button" class="btn btn-success">Создать заметку</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="todolist">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="card">
+                        <div class="card-header">
+                            <h5>Заголовок</h5>
+                            <div style="float: right;">
+                            <div class="card-header_edit"><a href="#" title="Редактировать заметку" ></a></div>
+                            <!-- /.cart-header_edit -->  
+                            <div class="card-header_del"><a href="#" title="Удалить заметку"></a></div>
+                        </div>
+                            
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                            <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
+
+                        </div>
+                </div>
+            </div>
+            <!-- /.col-12 col-md-4 col-lg-3 -->
+            <div class="col-12 col-md-4 col-lg-3"></div>
+            <!-- /.col-12 col-md-4 col-lg-3 -->
+            <div class="col-12 col-md-4 col-lg-3"></div>
+            <!-- /.col-12 col-md-4 col-lg-3 -->
+            <div class="col-12 col-md-4 col-lg-3"></div>
+            <!-- /.col-12 col-md-4 col-lg-3 -->
+        </div>
+        <!-- /.row -->
+    </section>
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

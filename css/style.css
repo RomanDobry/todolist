@@ -24,7 +24,15 @@
 
 body {
   font-family: 'Open Sans Regular', sans-serif;
-  height: 1500px;
+  height: 100%;
+}
+
+.namedosk .btn-success {
+  margin-top: 0px;
+  border-radius: 20px;
+  font-weight: 600;
+  float: right;
+  width: 200px !important;
 }
 
 .header {
@@ -52,5 +60,62 @@ body {
   text-align: center;
   font-style: italic;
   padding-left: 10px;
+}
+
+.namedosk {
+  padding: 10px 5px;
+  background: #FAFAFA;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.namedosk h3 {
+  font-size: 25px;
+}
+
+.todolist {
+  padding: 25px 25px;
+}
+
+.card {
+  border-radius: 8px !important;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+}
+
+.card:hover {
+  -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .card-header_edit, .card:hover .card-header_del {
+  opacity: 1;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+}
+
+.card-header_edit, .card-header_del {
+  background-size: contain !important;
+  height: 20px;
+  display: inline-block;
+  opacity: 0;
+  width: 20px;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  margin: 3px 5px 0 5px;
+  cursor: pointer;
+}
+
+.card-header_edit {
+  background: url("../img/edit.svg");
+  background-position: center center;
+}
+
+.card-header_del {
+  background: url("../img/delite.svg");
+  background-position: center center;
+}
+
+.card-header h5 {
+  display: inline-block !important;
 }
 /*# sourceMappingURL=style.css.map */
