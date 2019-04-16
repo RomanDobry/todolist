@@ -14,6 +14,9 @@
         .card-header_edit, .card-header_del
             opacity: 1
             transition: all 1s
+    &-body
+        .badges .btn
+            display: block!important
             
 .card-header
     &_edit, &_del
@@ -33,3 +36,28 @@
         background-position: center center
     h5
         display: inline-block!important
+.badges
+    display: inline-block
+    margin: 0 4px 4px 0
+    max-width: 100%
+    min-height: 20px
+    overflow: hidden
+    position: relative
+    text-decoration: none
+    text-overflow: ellipsis
+    &-time
+        padding-left: 15px
+    &-timeicon, &-time
+        display: inline-block!important
+
+    &-timeicon
+        background: url("../img/timesicons.svg") no-repeat
+        background-position: center center
+        background-size: contain!important
+        position: absolute
+        top: 13px
+        left: 10px
+        height: 14px
+        width: 14px
+.modal-footer
+    justify-content: flex-start!important
