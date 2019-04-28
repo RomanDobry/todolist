@@ -14,9 +14,9 @@
     <div class="header">
         <div class="container-fluid">
                 <div class="logotip">
-                    <div class="logo"><a href="/" class="logo"></a></div>      
+                    <a href="/"><div class="logo"></div></a>
                 </div>
-                <h1>To Do List</h1>
+                <a href="/"><h1>To Do List</h1></a>
         </div>
     </div>
     <?php require_once ('php/function.php');?>
@@ -44,7 +44,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                 <h3 class="modal-title">Заголовок</h3>
-                <!-- <textarea class="mod-card-back-title js-card-detail-title-input" dir="auto" style="overflow: hidden; overflow-wrap: break-word; height: 32px;">Позвонить в ПХ</textarea> -->
+                <textarea class="mod-card-back-title js-card-detail-title-input" dir="auto" style="overflow: hidden; overflow-wrap: break-word; height: 32px;">Позвонить в ПХ</textarea>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -70,11 +70,17 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body addzametiki">
                 <form method="post">
-                <input type="text" name="titlezam">
-                <input type="text" name="desczam">
-                <input type="number" name="datezam">
+                <input type="text" name="titlezam" placeholder="Заголовок *" required>
+                <textarea name="desczam" placeholder="Описание заметки"></textarea>
+                <input type="text" name='deadline' placeholder='Крайний срок'>
+                <select  name="statuszam">
+                <option disabled selected>Статус заметки</option>
+                <option value="В ожидании">В ожидании</option>
+                <option value="В работе">В работе</option>
+                <option value="Выполнено">Выполнено</option>
+                </select>
                 </div>
                 <div class="modal-footer">
                 <input type="submit" name="add" value="Добавить в базу" class="btn btn-success" >

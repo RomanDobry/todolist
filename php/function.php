@@ -7,9 +7,9 @@ $connect->query("SET NAMES 'utf8' ");
 $sysMessages = "Нет системных сообщений";
 // --------------------------------- Добавление пользователей
 //Функция добавления пользователей
-function addUser($titlezam, $desczam, $datezam, $connect)
+function addlist($titlezam, $desczam, $deadline,$statuszam, $connect)
 {
-    $add = $connect->query("INSERT INTO all_list (id, titlezam, desczam, datezam) VALUES  (NULL, '$titlezam', '$desczam', $datezam)");
+    $add = $connect->query("INSERT INTO all_list (id, titlezam, desczam, deadline, statuszam) VALUES  (NULL, '$titlezam', '$desczam', '$deadline', '$statuszam')");
     if($add){$GLOBALS['sysMessages'] = "Добавлен новый пользователь"; } else{ $GLOBALS['sysMessages'] = "Ошибка добавления";}
 }
 
@@ -18,21 +18,36 @@ if($_POST['add'])
 {
     $titlezam = $_POST['titlezam'];
     $desczam = $_POST['desczam'];
-    $datezam = $_POST['datezam'];
-    addUser($titlezam, $desczam, $datezam, $connect);
+    $deadline = $_POST['deadline'];
+    $statuszam = $_POST['statuszam'];
+    if ($_POST['desczam']="" && $_POST['deadline']="" && $_POST['statuszam']) {
+        addlist($titlezam, NULL, NULL, NULL, $connect);
+    }
+    if ($_POST['desczam']="" && $_POST['deadline']="" ) {
+        addlist($titlezam, NULL, NULL, $statuszam, $connect);
+    }
+    if ($_POST['desczam']="" ) {
+        addlist($titlezam, NULL,$deadline, $statuszam, $connect);
+    }
+    else {
+        addlist($titlezam, $desczam, $deadline, $statuszam, $connect);
+    }
+    
 }
 // --------------------------------- Вывод информации и удаление
 
 function printList($connect)
 {
     $list = $connect->query("SELECT * FROM all_list");
-    $num = 0;
     //засовываем все записи в ассоциативный массив и перебираем их
     echo '<section class="todolist"><div class="row">';
     while(($row = $list->fetch_assoc()) != FALSE){
         $id = $row['id'];
+        $kolvoslov=mb_strlen($row['desczam'], 'utf-8');
+        $desczamogr = mb_substr($row['desczam'], 0,300, 'UTF-8');
+        $titleogr = mb_substr($row['titlezam'], 0,50, 'UTF-8');
         echo '<div class="col-12 col-md-4 col-lg-4"><div class="card"><div class="card-header">',
-        "<h5>".$row['titlezam']."</h5>",
+        "<h5 style='width:80%;'>".$titleogr."</h5>",
         '<div style="float: right;">',
         '<div class="card-header_edit">';
         echo '
@@ -52,13 +67,19 @@ function printList($connect)
         echo '</div>',  //кнопка удаления пользователя
         '</div></div>',
         '<div class="card-body">',
-        "<p class='card-text'>".$row['desczam']."</p>",
-        '<div class="badges">',
-        "<a href='#' class='btn btn-secondary'><div class='badges-timeicon'></div>",
-        "<div class='badges-time'>".$row['datezam']."</div></a>",
-        '</div>',
-        "<div class='badges'><a href='#' class='btn btn-info'>В работе</a></div>", //Изменить
-        '</div></div></div>';
+        "<p class='card-text'>".$desczamogr."</p>";
+        
+        if ($row['deadline']!="") {
+            echo '<div class="badges">',
+            "<a href='#' class='btn btn-secondary'><div class='badges-timeicon'></div>",
+            "<div class='badges-time'>".$row['deadline']."</div></a>",
+            '</div>';
+        }
+        if ($row['statuszam']!="") {
+            echo "<div class='badges'><a href='#' class='btn btn-info'>".$row['statuszam']."</a></div>", //Изменить
+            '</div></div></div>';
+        }
+        echo '</div></div></div>';
     }
     echo "</div></div>";
 }
