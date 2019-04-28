@@ -27,6 +27,7 @@
                     <h3>Задания по университету</h3>
                 </div>
                 <div class="col-12 col-md-4">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editmodal">Создать заметку</button>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addlist">Создать заметку</button>
                 </div>
             </div>
@@ -39,18 +40,17 @@
  ?>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h3 class="modal-title">Заголовок</h3>
-                <textarea class="mod-card-back-title js-card-detail-title-input" dir="auto" style="overflow: hidden; overflow-wrap: break-word; height: 32px;">Позвонить в ПХ</textarea>
+                <textarea class="mod-card-back-title js-card-detail-title-input">Позвонить в ПХ</textarea>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
-                <p>Описание</p>
+                <textarea  class="edittextareaopis"placeholder="Описание"></textarea>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Сохранить</button>
