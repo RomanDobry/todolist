@@ -19,6 +19,7 @@
                 <h1>To Do List</h1>
         </div>
     </div>
+    <?php require_once ('php/function.php');?>
     <section class="namedosk">
         <div class="container-fluid">
             <div class="row justify-content-center">
@@ -26,56 +27,24 @@
                     <h3>Задания по университету</h3>
                 </div>
                 <div class="col-12 col-md-4">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Создать заметку</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addlist">Создать заметку</button>
                 </div>
             </div>
         </div>
     </section>
-    <section class="todolist">
-        <div class="row">
-            <div class="col-12 col-md-4 col-lg-3">
-                <div class="card">
-                        <div class="card-header">
-                            <h5>Заголовок</h5>
-                            <div style="float: right;">
-                            <div class="card-header_edit"><a href="#" title="Редактировать заметку" ></a></div>
-                            <!-- /.cart-header_edit -->  
-                            <div class="card-header_del"><a href="#" title="Удалить заметку"></a></div>
-                        </div>
-                            
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                            <div class="badges">
-                                <a href="#" class="btn btn-secondary">
-                                    <div class="badges-timeicon"></div>
-                                    <div class="badges-time">5 марта</div>
-                                    
-                                </a>
-                            </div>
-                            <div class="badges">
-                                <a href="#" class="btn btn-info">В работе</a>
-                            </div>
-                        </div>
-                </div>
-            </div>
-            <!-- /.col-12 col-md-4 col-lg-3 -->
-            <div class="col-12 col-md-4 col-lg-3"></div>
-            <!-- /.col-12 col-md-4 col-lg-3 -->
-            <div class="col-12 col-md-4 col-lg-3"></div>
-            <!-- /.col-12 col-md-4 col-lg-3 -->
-            <div class="col-12 col-md-4 col-lg-3"></div>
-            <!-- /.col-12 col-md-4 col-lg-3 -->
-        </div>
-        <!-- /.row -->
-    </section>
+    <?php printList($connect);?>
+ <?php
+ //закрываем соединение с БД
+ $connect->close();
+ ?>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Заголовок</h5>
+                <h3 class="modal-title">Заголовок</h3>
+                <!-- <textarea class="mod-card-back-title js-card-detail-title-input" dir="auto" style="overflow: hidden; overflow-wrap: break-word; height: 32px;">Позвонить в ПХ</textarea> -->
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -87,6 +56,31 @@
                 <button type="button" class="btn btn-success" data-dismiss="modal">Сохранить</button>
                 <button type="button" class="btn btn-danger">Отменить</button>
                 </div>
+            </div>
+        </div>  
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addlist" tabindex="-1" role="dialog" aria-labelledby="addlist" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h3 class="modal-title">Добавление новой заметки</h3>
+                <!-- <textarea class="mod-card-back-title js-card-detail-title-input" dir="auto" style="overflow: hidden; overflow-wrap: break-word; height: 32px;">Позвонить в ПХ</textarea> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <form method="post">
+                <input type="text" name="titlezam">
+                <input type="text" name="desczam">
+                <input type="number" name="datezam">
+                </div>
+                <div class="modal-footer">
+                <input type="submit" name="add" value="Добавить в базу" class="btn btn-success" >
+                <button type="button" class="btn btn-danger">Отменить</button>
+                </div>
+                </form>
             </div>
         </div>  
     </div>

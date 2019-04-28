@@ -1,17 +1,10 @@
-.namedosk
-    padding: 10px 5px
-    background: #FAFAFA
-    border-bottom: 1px solid #EBEBEB
-    h3
-        font-size: 25px
-.todolist
-    padding: 25px 25px
 .card
     border-radius: 8px!important
     transition: all .4s
+    margin-bottom: 30px
     &:hover
         box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3)
-        .card-header_edit, .card-header_del
+        .card-header_edit input, .card-header_del input
             opacity: 1
             transition: all 1s
     &-body
@@ -20,19 +13,22 @@
             
 .card-header
     &_edit, &_del
-        background-size: contain!important
-        height: 20px
         display: inline-block
-        opacity: 0
-        width: 20px
+        margin: 3px 5px
+    &_edit input, &_del input
+        background-size: contain!important
         transition: all 1s
-        margin: 3px 5px 0 5px
+        border: 0
+        opacity: 0
+        height: 20px
+        width: 20px
+        outline: none
         cursor: pointer  
-    &_edit
+    &_edit input
         background: url("../img/edit.svg")
         background-position: center center
-    &_del
-        background: url("../img/delite.svg")
+    &_del input
+        background: url("../img/delite.svg") no-repeat
         background-position: center center
     h5
         display: inline-block!important
@@ -59,5 +55,4 @@
         left: 10px
         height: 14px
         width: 14px
-.modal-footer
-    justify-content: flex-start!important
+

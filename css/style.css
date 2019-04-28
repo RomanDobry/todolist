@@ -80,6 +80,7 @@ body {
   border-radius: 8px !important;
   -webkit-transition: all .4s;
   transition: all .4s;
+  margin-bottom: 30px;
 }
 
 .card:hover {
@@ -87,7 +88,7 @@ body {
           box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
 }
 
-.card:hover .card-header_edit, .card:hover .card-header_del {
+.card:hover .card-header_edit input, .card:hover .card-header_del input {
   opacity: 1;
   -webkit-transition: all 1s;
   transition: all 1s;
@@ -98,24 +99,29 @@ body {
 }
 
 .card-header_edit, .card-header_del {
-  background-size: contain !important;
-  height: 20px;
   display: inline-block;
-  opacity: 0;
-  width: 20px;
+  margin: 3px 5px;
+}
+
+.card-header_edit input, .card-header_del input {
+  background-size: contain !important;
   -webkit-transition: all 1s;
   transition: all 1s;
-  margin: 3px 5px 0 5px;
+  border: 0;
+  opacity: 0;
+  height: 20px;
+  width: 20px;
+  outline: none;
   cursor: pointer;
 }
 
-.card-header_edit {
+.card-header_edit input {
   background: url("../img/edit.svg");
   background-position: center center;
 }
 
-.card-header_del {
-  background: url("../img/delite.svg");
+.card-header_del input {
+  background: url("../img/delite.svg") no-repeat;
   background-position: center center;
 }
 
@@ -153,9 +159,42 @@ body {
   width: 14px;
 }
 
+.modal-content {
+  background: #f5f6f7 !important;
+}
+
 .modal-footer {
   -webkit-box-pack: start !important;
       -ms-flex-pack: start !important;
           justify-content: flex-start !important;
+}
+
+.modal-header, .modal-footer {
+  border: none !important;
+}
+
+textarea.mod-card-back-title {
+  background: transparent;
+  border-radius: 3px;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 22px;
+  font-weight: 600;
+  height: 32px;
+  line-height: 24px;
+  min-height: 24px;
+  padding: 4px 8px;
+  resize: none;
+}
+
+textarea.mod-card-back-title.is-editing, textarea.mod-card-back-title:focus {
+  background: #ffffff;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 700px !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */
