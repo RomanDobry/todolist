@@ -1,9 +1,5 @@
 <?php
-//Подключаемся к БД Хост, Имя пользователя MySQL, его пароль, имя нашей базы
-$connect = new mysqli("127.0.0.1", "root", "", "todolist" );
-
-//Кодировка данных получаемых из базы
-$connect->query("SET NAMES 'utf8' ");
+include("php/database.php");
 $sysMessages = "Нет системных сообщений";
 // --------------------------------- Добавление пользователей
 //Функция добавления пользователей
@@ -34,26 +30,25 @@ if($_POST['add'])
     }
     
 }
-// --------------------------------- Вывод информации и удаление
-
+// --------------------------------- Вывод информации и удаление 
 function printList($connect)
 {
-    $list = $connect->query("SELECT * FROM all_list");
+    $list = $connect->query("SELECT * FROM all_list" );
     //засовываем все записи в ассоциативный массив и перебираем их
-    echo '<section class="todolist"><div class="row">';
+    print '<section class="todolist"><div class="row listall">';
     while(($row = $list->fetch_assoc()) != FALSE){
         $id = $row['id'];
-        $kolvoslov=mb_strlen($row['desczam'], 'utf-8');
         $desczamogr = mb_substr($row['desczam'], 0,300, 'UTF-8');
         $titleogr = mb_substr($row['titlezam'], 0,50, 'UTF-8');
-        echo '<div class="col-12 col-md-4 col-lg-4"><div class="card"><div class="card-header">',
+        echo '<div class="col-12 col-md-4 col-lg-4"><div class="card">
+        <div class="card-header">',
         "<h5 style='width:80%;'>".$titleogr."</h5>",
         '<div style="float: right;">',
         '<div class="card-header_edit">';
         echo '
-              <form method="get">
-                <input type="hidden" name="id" value="'.$id.'">
-                <input name="red" type="submit" value="&nbsp" title="Редактировать">
+              <form class="postonelist">
+                <input type="hidden" name="id" class="printid" value="'.$id.'">
+                <input name="openedit" type="submit" value="&nbsp" title="Редактировать" data-toggle="modal" data-target="#editmodal">
               </form>
         ';
         echo'</div>', // Кнопка редактирвоания
@@ -67,7 +62,7 @@ function printList($connect)
         echo '</div>',  //кнопка удаления пользователя
         '</div></div>',
         '<div class="card-body">',
-        "<p class='card-text'>".$desczamogr."</p>";
+        "<p class='card-text ' id='desczam121'>".$desczamogr."</p>";
         
         if ($row['deadline']!="") {
             echo '<div class="badges">',
@@ -76,12 +71,11 @@ function printList($connect)
             '</div>';
         }
         if ($row['statuszam']!="") {
-            echo "<div class='badges'><a href='#' class='btn btn-info'>".$row['statuszam']."</a></div>", //Изменить
-            '</div></div></div>';
+            echo "<div class='badges'><a href='#' class='btn btn-info'>".$row['statuszam']."</a></div>"; //Изменить
         }
         echo '</div></div></div>';
     }
-    echo "</div></div>";
+    echo "</div></div></section>";
 }
 
 // отслеживаем нажатие кнопки удаления и удалаем пользователя по id
@@ -93,6 +87,15 @@ if($_GET['del']){
     }else{
         $GLOBALS['sysMessages'] = " Ошибка удаления";
     }
+}
+if ($_POST['updatelistall'])
+{
+    $titlezam = $_POST['titlezam'];
+    $desczam = $_POST['desczam'];
+    $deadline = $_POST['deadline'];
+    $statuszam = $_POST['statuszam'];
+    $update_sql = "UPDATE all_list SET titlezam='$titlezam', desczam='$desczam', deadline='$deadline', statuszam='$statuszam' WHERE id='$id'";
+    
 }
 //вывод системных сообщений
 // echo "<p style='color: darkgreen; font-size: 18px;'>".$sysMessages."</p>" ;

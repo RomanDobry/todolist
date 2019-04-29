@@ -204,8 +204,6 @@ textarea.mod-card-back-title.is-editing, textarea.mod-card-back-title:focus {
 }
 
 .modal-body textarea {
-  overflow: hidden;
-  overflow-wrap: break-word;
   min-height: 100px;
 }
 
@@ -216,6 +214,15 @@ textarea.mod-card-back-title.is-editing, textarea.mod-card-back-title:focus {
 
 .modal-body .edittextareaopis {
   margin: 0 0;
+  display: inline-block !important;
+  min-height: 150px !important;
+  max-height: 500px !important;
+}
+
+#selectonelist .modal-footer {
+  display: block !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 @media (min-width: 576px) {
