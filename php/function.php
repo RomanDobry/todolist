@@ -42,7 +42,7 @@ function printList($connect)
         $titleogr = mb_substr($row['titlezam'], 0,50, 'UTF-8');
         echo '<div class="col-12 col-md-4 col-lg-4"><div class="card">
         <div class="card-header">',
-        "<h5 style='width:80%;'>".$titleogr."</h5>",
+        "<h5 id='titlelist-$id' style='width:80%;'>".$titleogr."</h5>",
         '<div style="float: right;">',
         '<div class="card-header_edit">';
         echo '
@@ -61,17 +61,17 @@ function printList($connect)
         ';
         echo '</div>',  //кнопка удаления пользователя
         '</div></div>',
-        '<div class="card-body">',
-        "<p class='card-text ' id='desczam121'>".$desczamogr."</p>";
+        '<div class="card-body" id="card-body-'.$id.'">',
+        "<p class='card-text ' id='desclist-$id'>".$desczamogr."</p>";
         
         if ($row['deadline']!="") {
             echo '<div class="badges">',
             "<a href='#' class='btn btn-secondary'><div class='badges-timeicon'></div>",
-            "<div class='badges-time'>".$row['deadline']."</div></a>",
+            "<div id='deadlinelist-$id' class='badges-time'>".$row['deadline']."</div></a>",
             '</div>';
         }
         if ($row['statuszam']!="") {
-            echo "<div class='badges'><a href='#' class='btn btn-info'>".$row['statuszam']."</a></div>"; //Изменить
+            echo "<div class='badges'><a id='statuslist-$id' href='#' class='btn btn-info'>".$row['statuszam']."</a></div>"; //Изменить
         }
         echo '</div></div></div>';
     }
@@ -87,15 +87,6 @@ if($_GET['del']){
     }else{
         $GLOBALS['sysMessages'] = " Ошибка удаления";
     }
-}
-if ($_POST['updatelistall'])
-{
-    $titlezam = $_POST['titlezam'];
-    $desczam = $_POST['desczam'];
-    $deadline = $_POST['deadline'];
-    $statuszam = $_POST['statuszam'];
-    $update_sql = "UPDATE all_list SET titlezam='$titlezam', desczam='$desczam', deadline='$deadline', statuszam='$statuszam' WHERE id='$id'";
-    
 }
 //вывод системных сообщений
 // echo "<p style='color: darkgreen; font-size: 18px;'>".$sysMessages."</p>" ;

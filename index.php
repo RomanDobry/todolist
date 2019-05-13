@@ -34,8 +34,8 @@
         </div>
     </section>
     <?php printList($connect);?>
-    <input type="text" id='test'>
-    <p id="inqwe"></p>
+    <!-- <input type="text" id='test'>
+    <p class="ptest"></p> -->
     <!-- Modal -->
     <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <form method='POST' class="updatelist">
@@ -60,7 +60,7 @@
                 <form method="post">
                 <input type="text" name="titlezam" placeholder="Заголовок *" required>
                 <textarea name="desczam" placeholder="Описание заметки"></textarea>
-                <input type="date" name='deadline' id="deadline" placeholder='Крайний срок'>
+                <input type="text" name='deadline' class="deadline" placeholder='Крайний срок'>
                 <select  name="statuszam">
                 <option disabled selected>Статус заметки</option>
                 <option value="В ожидании">В ожидании</option>

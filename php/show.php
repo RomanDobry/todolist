@@ -4,15 +4,15 @@ include("../php/database.php");
     while(($row = $onelist->fetch_assoc()) != FALSE){
         echo '<div class="modal-header">';
         echo '<input type="hidden" id="idshow" name="id" value="'.$row['id'].'">';
-        print '<textarea name="titlezam" class="mod-card-back-title js-card-detail-title-input">'.$row['titlezam'].'</textarea>';
+        print '<textarea name="titlezam" id="titlezammodal" class="mod-card-back-title js-card-detail-title-input">'.$row['titlezam'].'</textarea>';
         echo '
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">';
-        echo '<textarea  name="desczam" id="desczam12" class="edittextareaopis" placeholder="Описание">'.$row["desczam"].'</textarea>';
-        echo '<input type="date" name="deadline" id="deadline2" class="deadline21" placeholder="Крайний срок" value="'.$row["deadline"].'">';
+        echo '<textarea  name="desczam" id="descriptionmodal" class="edittextareaopis" placeholder="Описание">'.$row["desczam"].'</textarea>';
+        echo '<input type="date" name="deadline" id="deadlinenode"  class="deadline" placeholder="Крайний срок" value="'.$row["deadline"].'">';
         echo '
         <select name="statuszam" id="statusnode">';
         if($row["statuszam"] == "Выполнено")
@@ -48,7 +48,7 @@ include("../php/database.php");
 
         echo '
         <div class="modal-footer">
-                <button type="submit" name="updatelistall" class="btn btn-success">Сохранить</button>
+                <button type="submit" name="updatelistall" id="updatelist" class="btn btn-success">Сохранить</button>
                 <button type="button" class="btn btn-danger">Отменить</button>
                 </div>';
     }
